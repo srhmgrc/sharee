@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Scrapbook</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #fff8dc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .scrapbook {
+            background-color: #f9ebea;
+            border: 10px solid #d7bde2;
+            border-radius: 15px;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            max-height: 90vh; /* Set max height for scrolling */
+            overflow-y: auto; /* Enable vertical scrolling */
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+        }
+        .scrapbook h1 {
+            font-family: 'Brush Script MT', cursive;
+            color: #c0392b;
+            margin-bottom: 20px;
+        }
+        .scrapbook p {
+            font-size: 18px;
+            color: #6c3483;
+        }
+        .scrapbook img {
+            width: 200px;
+            height: 270px;
+            border-radius: 10%;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+        .scrapbook img:hover {
+            transform: scale(1.1);
+        }
+        .heart {
+            position: absolute;
+            width: 30px; /* Smaller size */
+            height: 30px; /* Smaller size */
+            background-color: #ff6f61;
+            transform: rotate(-45deg);
+            top: 13px; /* Lower position */
+            left: 50%;
+            margin-left: -15px; /* Center the heart */
+        }
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            width: 30px; /* Smaller size */
+            height: 30px; /* Smaller size */
+            border-radius: 50%;
+            background-color: #ff6f61;
+        }
+        .heart::before {
+            top: -15px; /* Adjusted for smaller size */
+            left: 0;
+        }
+        .heart::after {
+            top: 0;
+            left: 15px; /* Adjusted for smaller size */
+        }
+        .surprise-button, .back-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            position: relative;
+            background-color: #007bff;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        .surprise-button {
+            background-color: #007bff;
+        }
+        .surprise-button:hover {
+            background-color: #0056b3;
+        }
+        .surprise-button.trick {
+            animation: moveAround 1s infinite, colorChange 1s infinite;
+        }
+        @keyframes moveAround {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(10px, -10px); }
+            50% { transform: translate(-10px, 10px); }
+            75% { transform: translate(10px, 10px); }
+            100% { transform: translate(-10px, -10px); }
+        }
+        @keyframes colorChange {
+            0% { background-color: #007bff; }
+            50% { background-color: #0056b3; }
+            100% { background-color: #007bff; }
+        }
+        .surprise-message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #e74c3c;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="scrapbook">
+        <div class="heart"></div>
+        <h1>Happy Monthsary, My Bebe!</h1>
+        <p>Here's a little something to show you how much I care. You mean the world to me!</p>
+        <p>Look at these wonderful memories we've made together:</p>
+
+        <img src="pamp.jpg" alt="Memory 1">
+        <img src="mnl.jpg" alt="Memory 2">
+        <img src="sml.jpg" alt="Memory 3">
+        <p>I can't wait to create more beautiful memories with you. I love you!</p>
+        
+        <button class="surprise-button" id="trickButton">Click Me!</button>
+        <div class="surprise-message" id="surpriseMessage">
+            <p>Happy Monthsary My love, oo na, iniisip mo bakit my love? hahahha wala gusto ko lang bat ba! anw, happy monthsary bebe, 5 months na haha, dami na ring away, tampuhan na nangyari para bang years na tayo pero 5months pa lang, marami pa tayong pagdaraanan nawa patuloy pa rin nating piliin ang bawat isa, patuloy pa rin nating mahalin ang bawat isa. 'wag na ma sungit bebe, kawawa naman ako haha. Mahal na mahal kita. Thank you sa lahat, sobrang na a-apreciate ko 'yung efforts mo.. sobrang thank you bebe. Happy Monthsary, i love you so much!</p>
+        </div>
+    </div>
+
+    <script>
+        const button = document.getElementById('trickButton');
+        button.addEventListener('mouseover', function() {
+            button.classList.add('trick');
+        });
+        button.addEventListener('mouseleave', function() {
+            button.classList.remove('trick');
+        });
+        button.addEventListener('click', function() {
+            showSurprise();
+            button.classList.remove('trick'); // Ensure animation stops once clicked
+        });
+
+        function showSurprise() {
+            const message = document.getElementById('surpriseMessage');
+            message.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
